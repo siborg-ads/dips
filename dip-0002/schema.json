@@ -1,0 +1,99 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Ad Offer Metadata",
+    "type": "object",
+    "properties": {
+        "creatorName": {
+            "type": "string",
+            "description": "The name of the creator or entity offering the ad space."
+        },
+        "creatorDescription": {
+            "type": "string",
+            "description": "A brief description of the creator or entity."
+        },
+        "creatorImg": {
+            "type": "string",
+            "format": "uri",
+            "description": "A URL to an image of the creator or entity's logo."
+        },
+        "creatorCategories": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "dApp",
+                    "social",
+                    "media",
+                    "digitalArt",
+                    "blockchainTech",
+                    "cryptoAnalysis",
+                    "virtualGoods",
+                    "musicNFTs",
+                    "collectibles",
+                    "education"
+                ]
+            },
+            "description": "Categories that describe the creator or entity's industry or focus areas."
+        },
+        "exposureCategories": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "DeFi",
+                    "NFT",
+                    "Crypto",
+                    "Gaming",
+                    "Metaverse",
+                    "ArtTech",
+                    "Sustainability",
+                    "Education",
+                    "UtilityNFTs",
+                    "Community"
+                ]
+            },
+            "description": "Categories that describe the type of exposure or audience the ad offer targets."
+        },
+        "offerName": {
+            "type": "string",
+            "description": "The name of the ad offer."
+        },
+        "offerDescription": {
+            "type": "string",
+            "description": "A detailed description of what the ad offer entails."
+        },
+        "offerImg": {
+            "type": "string",
+            "format": "uri",
+            "description": "A URL to an image representing the ad offer."
+        },
+        "terms": {
+            "type": "string",
+            "format": "uri",
+            "description": "A link to the terms and conditions of the ad offer, ideally stored on IPFS."
+        },
+        "validFromDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The start date from when the ad offer is valid."
+        },
+        "validToDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The end date until when the ad offer remains valid."
+        }
+    },
+    "required": [
+        "creatorName",
+        "creatorDescription",
+        "creatorImg",
+        "creatorCategories",
+        "exposureCategories",
+        "offerName",
+        "offerDescription",
+        "offerImg",
+        "terms",
+        "validFromDate",
+        "validToDate"
+    ]
+}
