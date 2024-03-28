@@ -1,0 +1,186 @@
+{
+    "adParameters": {
+        "imageURL": {
+            "description": "This field specifies the URL for the ad image, serving as a visual representation to capture viewers' attention.",
+            "valueRegExp": "^\\w+:\\/\\/[\\s()<>]+(?:\\([\\w\\d]+\\)|([^[:punct:]\\s]|\\/))$",
+            "variants": [
+                {
+                    "description": "Specifies the required image fixed size. See https://www.iab.com/wp-content/uploads/2019/04/IABNewAdPortfolio_LW_FixedSizeSpec.pdf for IAB's standard ad sizes.",
+                    "example": "imageURL-320x50",
+                    "variantRegExp": "\\d+x\\d+",
+                    "required": false
+                },
+                {
+                    "description": "Specifies the required image ratio to maintain consistent appearance across platforms.",
+                    "example": "imageURL-1:1",
+                    "variantRegExp": "\\d+:\\d+",
+                    "required": false
+                },
+                {
+                    "description": "Limits the image source to IPFS or HTTPS protocols for secure and reliable delivery.",
+                    "example": "imageURL-ipfs",
+                    "variantRegExp": "(ipfs|https)",
+                    "required": false
+                },
+                {
+                    "description": "Constrains the image to specific formats for optimized loading times and device compatibility.",
+                    "example": "imageURL-jpg",
+                    "variantRegExp": "(jpeg|jpg|png|gif|bmp|tiff|webp)",
+                    "required": false
+                }
+            ]
+        },
+        "linkURL": {
+            "description": "Defines the destination URL to direct users upon ad interaction, facilitating engagement and conversion.",
+            "valueRegExp": "^https:\\/\\/[^[\\s()<>]+(?:\\([\\w\\d]+\\)|([^[:punct:]\\s]|\\/))$",
+            "variants": []
+        },
+        "xCreatorHandle": {
+            "description": "Identifies the X (Twitter) handle of the promoted individual or entity, enhancing their online presence.",
+            "valueRegExp": "^@[A-Za-z0-9_]{1,15}$",
+            "variants": []
+        },
+        "xSpaceId": {
+            "description": "Indicates the unique ID for a promoted X (Twitter) Space, connecting users to live discussions.",
+            "valueRegExp": "^\\d[A-Za-z\\d]{12}$",
+            "variants": []
+        }
+    },
+    "integrations": {
+        "BannerDynamic": {
+            "names": {
+                "default": "Dynamic Clickable Banner",
+                "fr": "Bannière Dynamique Clicable"
+            },
+            "description": "Features a banner that showcases an image and URL submitted by an NFT owner. A random minted NFT's associated image and URL are displayed per request. Checkout banner is displayed if there is no validated ad.",
+            "adParameters": [
+                {
+                    "slug": "imageURL",
+                    "required": true
+                },
+                {
+                    "slug": "linkURL",
+                    "required": true
+                }
+            ],
+            "allowedVariants": [
+                "fromContext"
+            ],
+            "compatiblePlatforms": [
+                "newsletter",
+                "React Native",
+                "web"
+            ]
+        },
+        "ClickableLogosGrid": {
+            "names": {
+                "default": "Clickable Logos Grid",
+                "fr": "Grille de logos clicables"
+            },
+            "description": "Displays a grid of logos. Each logo can link to a URL. NFT owners can submit their logo and URL for a cell. Checkout logos and URLs are shown for non-minted or unvalidated entries.",
+            "adParameters": [
+                {
+                    "slug": "imageURL-1:1",
+                    "required": true
+                },
+                {
+                    "slug": "linkURL",
+                    "required": true
+                }
+            ],
+            "allowedVariants": [],
+            "compatiblePlatforms": [
+                "newsletter",
+                "React Native",
+                "web"
+            ]
+        },
+        "LogosGrid": {
+            "names": {
+                "default": "Logos Grid",
+                "fr": "Grille de logos"
+            },
+            "description": "Displays a grid of logos. NFT owners can submit their logo for a cell. Nothing is displayed for non-minted or unvalidated entries.",
+            "adParameters": [
+                {
+                    "slug": "imageURL-1:1",
+                    "required": true
+                }
+            ],
+            "allowedVariants": [],
+            "compatiblePlatforms": [
+                "newsletter",
+                "print",
+                "React Native",
+                "web"
+            ]
+        },
+        "xCreatorHighlight": {
+            "names": {
+                "default": "X (Twitter) Profil Promotion",
+                "fr": "Promotion d'un profil X (Twitter)"
+            },
+            "description": "Promotes a User by displaying the X (Twitter) handle and image. Users are redirected to the profile page by clicking the banner. A checkout link to buy ad space is shown if there's no validated ad.",
+            "adParameters": [
+                {
+                    "slug": "xCreatorHandle",
+                    "required": true
+                }
+            ],
+            "allowedVariants": [
+                "fromContext"
+            ],
+            "compatiblePlatforms": [
+                "newsletter",
+                "React Native",
+                "web"
+            ]
+        },
+        "xSpaceHighlight": {
+            "names": {
+                "default": "X (Twitter) Space Promotion",
+                "fr": "Promotion d'un Space provenant de X (Twitter)"
+            },
+            "description": "Promotes a Space by displaying the X (Twitter) handle of the host and the Space title. Users can join the Space by clicking the banner. A checkout link to buy ad space is shown if there's no validated ad.",
+            "adParameters": [
+                {
+                    "slug": "xSpaceId",
+                    "required": true
+                }
+            ],
+            "allowedVariants": [
+                "fromContext"
+            ],
+            "compatiblePlatforms": [
+                "React Native",
+                "web"
+            ]
+        }
+    },
+    "integrationVariants": {
+        "fromContext": {
+            "description": "Displays the ad contextually relevant to the user. Token id(s) can be determined by the user's search query, for example.",
+            "example": "BannerDynamic-fromContext",
+            "variationInputs": [
+                {
+                    "argName": "tokenIds",
+                    "description": "Specifies the token ID(s) to use for contextual ad display."
+                }
+            ]
+        }
+    },
+    "platforms": {
+        "newsletter": {
+            "description": "Email newsletters."
+        },
+        "print": {
+            "description": "Non interactive or printed materials, such as PDF, posters, or magazines."
+        },
+        "React Native": {
+            "description": "Mobile applications built using React Native."
+        },
+        "web": {
+            "description": "Web-based platforms, including websites and web applications."
+        }
+    }
+}
