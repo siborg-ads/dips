@@ -119,15 +119,15 @@ console.log(
 
 // adParameters: ["imageURL", "linkURL"]
 console.log(
-  'fromIntegrationsToAdParameters(["BannerDynamic-fromContext"]) ',
-  fromIntegrationsToAdParameters(['BannerDynamic-fromContext'])
+  'fromIntegrationsToAdParameters(["DynamicBanner-fromContext"]) ',
+  fromIntegrationsToAdParameters(['DynamicBanner-fromContext'])
 )
 
 // adParameters: [ 'imageURL', 'linkURL', 'xCreatorHandle', 'xSpaceId' ]
 console.log(
-  'fromIntegrationsToAdParameters(["BannerDynamic-fromContext","xCreatorHighlight-fromContext", "xSpaceHighlight-fromContext"]) ',
+  'fromIntegrationsToAdParameters(["DynamicBanner-fromContext","xCreatorHighlight-fromContext", "xSpaceHighlight-fromContext"]) ',
   fromIntegrationsToAdParameters([
-    'BannerDynamic-fromContext',
+    'DynamicBanner-fromContext',
     'xCreatorHighlight-fromContext',
     'xSpaceHighlight-fromContext'
   ])
@@ -141,15 +141,15 @@ console.log(
 
 //  { maxSupply: 4, allowedTokenIds: [ 14, 18, 15, 25 ] }
 console.log(
-  'fromIntegrationsToSupplyRestrictions(["BannerDynamic"], 4, [14,18,15,25]) ',
-  fromIntegrationsToSupplyRestrictions(['BannerDynamic'], 4, [14, 18, 15, 25])
+  'fromIntegrationsToSupplyRestrictions(["DynamicBanner"], 4, [14,18,15,25]) ',
+  fromIntegrationsToSupplyRestrictions(['DynamicBanner'], 4, [14, 18, 15, 25])
 )
 
 // { maxSupply: 115792089237316195423570985008687907853269984665640564039457584007913129639935, allowedTokenIds: [] }
 console.log(
-  'fromIntegrationsToSupplyRestrictions(["BannerDynamic-fromContext","xCreatorHighlight-fromContext", "xSpaceHighlight-fromContext"]) ',
+  'fromIntegrationsToSupplyRestrictions(["DynamicBanner-fromContext","xCreatorHighlight-fromContext", "xSpaceHighlight-fromContext"]) ',
   fromIntegrationsToSupplyRestrictions([
-    'BannerDynamic-fromContext',
+    'DynamicBanner-fromContext',
     'xCreatorHighlight-fromContext',
     'xSpaceHighlight-fromContext'
   ])
@@ -157,10 +157,10 @@ console.log(
 
 // { maxSupply: 115792089237316195423570985008687907853269984665640564039457584007913129639935, allowedTokenIds: [1,2,3] }
 console.log(
-  'fromIntegrationsToSupplyRestrictions(["BannerDynamic-fromContext","xCreatorHighlight-fromContext", "xSpaceHighlight-fromContext"], 10, [1,2,3]) ',
+  'fromIntegrationsToSupplyRestrictions(["DynamicBanner-fromContext","xCreatorHighlight-fromContext", "xSpaceHighlight-fromContext"], 10, [1,2,3]) ',
   fromIntegrationsToSupplyRestrictions(
     [
-      'BannerDynamic-fromContext',
+      'DynamicBanner-fromContext',
       'xCreatorHighlight-fromContext',
       'xSpaceHighlight-fromContext'
     ],

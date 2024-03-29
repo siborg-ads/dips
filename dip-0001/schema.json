@@ -47,7 +47,7 @@
         }
     },
     "integrations": {
-        "BannerDynamic": {
+        "DynamicBanner": {
             "names": {
                 "default": "Dynamic Clickable Banner",
                 "fr": "Bannière Dynamique Clicable"
@@ -160,7 +160,7 @@
     "integrationVariants": {
         "fromContext": {
             "description": "Displays the ad contextually relevant to the user. Token id(s) can be determined by the user's search query, for example.",
-            "example": "BannerDynamic-fromContext",
+            "example": "DynamicBanner-fromContext",
             "variationInputs": [
                 {
                     "argName": "tokenIds",
