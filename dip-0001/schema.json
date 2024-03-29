@@ -12,8 +12,8 @@
                 },
                 {
                     "description": "Specifies the required image ratio to maintain consistent appearance across platforms.",
-                    "example": "imageURL-1:1",
-                    "variantRegExp": "\\d+:\\d+",
+                    "example": "imageURL-1x1",
+                    "variantRegExp": "\\d+x\\d+",
                     "required": false
                 },
                 {
@@ -80,7 +80,7 @@
             "description": "Displays a grid of logos. Each logo can link to a URL. NFT owners can submit their logo and URL for a cell. Checkout logos and URLs are shown for non-minted or unvalidated entries.",
             "adParameters": [
                 {
-                    "slug": "imageURL-1:1",
+                    "slug": "imageURL-1x1",
                     "required": true
                 },
                 {
@@ -103,7 +103,7 @@
             "description": "Displays a grid of logos. NFT owners can submit their logo for a cell. Nothing is displayed for non-minted or unvalidated entries.",
             "adParameters": [
                 {
-                    "slug": "imageURL-1:1",
+                    "slug": "imageURL-1x1",
                     "required": true
                 }
             ],
