@@ -50,7 +50,7 @@
         "DynamicBanner": {
             "names": {
                 "default": "Dynamic Clickable Banner",
-                "fr": "Bannière Dynamique Clicable"
+                "fr": "Bannière Dynamique cliquable"
             },
             "description": "Features a banner that showcases an image and URL submitted by an NFT owner. A random minted NFT's associated image and URL are displayed per request. Checkout banner is displayed if there is no validated ad.",
             "adParameters": [
@@ -75,7 +75,7 @@
         "ClickableLogosGrid": {
             "names": {
                 "default": "Clickable Logos Grid",
-                "fr": "Grille de logos clicables"
+                "fr": "Grille de logos cliquables"
             },
             "description": "Displays a grid of logos. Each logo can link to a URL. NFT owners can submit their logo and URL for a cell. Checkout logos and URLs are shown for non-minted or unvalidated entries.",
             "adParameters": [
