@@ -1,0 +1,106 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Ad Offer Metadata Schema",
+    "type": "object",
+    "properties": {
+        "creator": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "external_link": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "categories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "offer": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "terms": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "external_link": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "valid_from": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "valid_to": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "categories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "token_metadata": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "image": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "external_link": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "attributes": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "trait_type": {
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "trait_type",
+                                    "value"
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
