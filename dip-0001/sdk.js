@@ -111,7 +111,7 @@ console.log(
   JSON.stringify(getIntegrations('en'), null, 2)
 )
 
-// adParameters: ["imageURL-1x1", "linkURL"]
+// adParameters: ["imageURL-1:1", "linkURL"]
 console.log(
   'fromIntegrationsToAdParameters(["ClickableLogosGrid"]) ',
   fromIntegrationsToAdParameters(['ClickableLogosGrid'])
