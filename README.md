@@ -12,7 +12,7 @@ Below is a table summarizing the currently active d>cast Improvement Proposals, 
 
 | DIP Number | Description                                 | Status  |
 |------------|---------------------------------------------|---------|
-| [dip-0001](./dip-0001.md) | Integration and ad parameters definitions | 🚧 WIP |
-| [dip-0002](./dip-0002.md) | Ad offers metadata schema                  | 🚧 WIP |
+| [dip-0001](./dip-0001.md) | Integration and ad parameters definitions | ✅ OK |
+| [dip-0002](./dip-0002.md) | Ad offers metadata schema                  | ✅ OK |
 
 Each DIP document is meticulously crafted to provide clear, actionable guidelines for developers and contributors, ensuring that the d>cast network remains at the forefront of decentralized media innovation.

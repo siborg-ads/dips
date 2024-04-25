@@ -23,7 +23,11 @@ function fromIntegrationsToAdParameters(integrationSlugs) {
   for (const integrationSlug of integrationSlugs) {
     const slug = integrationSlug.split('-')[0]
     const adParameterForIntegrations =
-      schema.integrations[slug].adParameters.map((a) => a.slug) || []
+      schema.integrations[slug].adParameters.map((a) =>
+        a.variants && a.variants.length
+          ? `${a.slug}-${a.variants.map((v) => v.defaultValue).join('-')}`
+          : a.slug
+      ) || []
     adParameters = adParameters.concat(adParameterForIntegrations)
   }
 
@@ -57,6 +61,77 @@ function fromIntegrationsToAdParameters(integrationSlugs) {
   })
 
   return { adParameters, adParametersDetails }
+}
+
+function fromAdParametersToIntegrations(adParameters) {
+  const adParametersAvailable = {}
+  const allowedIntegrations = []
+
+  for (let adParameter of adParameters) {
+    const split = adParameter.split('-')
+    const base = split[0]
+
+    if (!adParametersAvailable[base]) {
+      adParametersAvailable[base] = []
+    }
+    adParametersAvailable[base].push(adParameter)
+
+    for (let i = 1; i < split.length; i++) {
+      const variant = split[i]
+      if (
+        schema.adParameters[base] &&
+        schema.adParameters[base].variants.length
+      ) {
+        for (const { variantRegExp } of schema.adParameters[base].variants) {
+          const regex = new RegExp(variantRegExp)
+          if (regex.test(variant)) {
+            const key = `${base}-${variantRegExp}`
+            if (!adParametersAvailable[key]) {
+              adParametersAvailable[key] = []
+            }
+            adParametersAvailable[key].push(adParameter)
+          }
+        }
+      }
+    }
+  }
+
+  for (const integrationSlug of Object.keys(schema.integrations)) {
+    const requiredAdParameters = []
+    for (const { slug, variants } of schema.integrations[integrationSlug]
+      .adParameters) {
+      if (variants && variants.length) {
+        for (const { variantRegExp } of variants) {
+          requiredAdParameters.push(`${slug}-${variantRegExp}`)
+        }
+      } else {
+        requiredAdParameters.push(slug)
+      }
+    }
+    let isAvailable = true
+    const adParametersAvailableForIntegration = []
+
+    for (const requiredAdParameter of requiredAdParameters) {
+      if (!adParametersAvailable[requiredAdParameter]) {
+        isAvailable = false
+        break
+      } else {
+        adParametersAvailableForIntegration.push(
+          ...adParametersAvailable[requiredAdParameter]
+        )
+      }
+    }
+
+    if (isAvailable) {
+      allowedIntegrations.push({
+        adParameters: adParametersAvailableForIntegration,
+        integrationSlug,
+        integration: schema.integrations[integrationSlug]
+      })
+    }
+  }
+
+  return allowedIntegrations
 }
 
 function fromIntegrationsToSupplyRestrictions(
@@ -117,13 +192,13 @@ console.log(
   fromIntegrationsToAdParameters(['ClickableLogosGrid'])
 )
 
-// adParameters: ["imageURL", "linkURL"]
+// adParameters: ["imageURL-6.4:1", "linkURL"]
 console.log(
   'fromIntegrationsToAdParameters(["DynamicBanner-fromContext"]) ',
   fromIntegrationsToAdParameters(['DynamicBanner-fromContext'])
 )
 
-// adParameters: [ 'imageURL', 'linkURL', 'xCreatorHandle', 'xSpaceId' ]
+// adParameters: [ 'imageURL-6.4:1', 'linkURL', 'xCreatorHandle', 'xSpaceId' ]
 console.log(
   'fromIntegrationsToAdParameters(["DynamicBanner-fromContext","xCreatorHighlight-fromContext", "xSpaceHighlight-fromContext"]) ',
   fromIntegrationsToAdParameters([
@@ -131,6 +206,12 @@ console.log(
     'xCreatorHighlight-fromContext',
     'xSpaceHighlight-fromContext'
   ])
+)
+
+// DynamicBanner, ClickableLogosGrid, LogosGrid, xCreatorHighlight
+console.log(
+  'fromAdParametersToIntegrations(["imageURL-5:5", "linkURL", "xCreatorHandle"])',
+  fromAdParametersToIntegrations(['imageURL-5:5', 'linkURL', 'xCreatorHandle'])
 )
 
 // {  maxSupply: 10,  allowedTokenIds: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ] }

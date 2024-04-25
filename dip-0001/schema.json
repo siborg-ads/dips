@@ -13,7 +13,7 @@
                 {
                     "description": "Specifies the required image ratio to maintain consistent appearance across platforms.",
                     "example": "imageURL-1:1",
-                    "variantRegExp": "\\d+x\\d+",
+                    "variantRegExp": "\\d+:\\d+",
                     "required": false
                 },
                 {
@@ -56,7 +56,15 @@
             "adParameters": [
                 {
                     "slug": "imageURL",
-                    "required": true
+                    "required": true,
+                    "variants": [
+                        {
+                            "description": "Specifies the required image ratio.",
+                            "variantRegExp": "\\d+:\\d+",
+                            "required": false,
+                            "defaultValue": "6.4:1"
+                        }
+                    ]
                 },
                 {
                     "slug": "linkURL",
@@ -80,8 +88,16 @@
             "description": "Displays a grid of logos. Each logo can link to a URL. NFT owners can submit their logo and URL for a cell. Checkout logos and URLs are shown for non-minted or unvalidated entries.",
             "adParameters": [
                 {
-                    "slug": "imageURL-1:1",
-                    "required": true
+                    "slug": "imageURL",
+                    "required": true,
+                    "variants": [
+                        {
+                            "description": "Specifies the required image ratio.",
+                            "variantRegExp": "\\d+:\\d+",
+                            "required": false,
+                            "defaultValue": "1:1"
+                        }
+                    ]
                 },
                 {
                     "slug": "linkURL",
@@ -103,8 +119,16 @@
             "description": "Displays a grid of logos. NFT owners can submit their logo for a cell. Nothing is displayed for non-minted or unvalidated entries.",
             "adParameters": [
                 {
-                    "slug": "imageURL-1:1",
-                    "required": true
+                    "slug": "imageURL",
+                    "required": true,
+                    "variants": [
+                        {
+                            "description": "Specifies the required image ratio.",
+                            "variantRegExp": "\\d+:\\d+",
+                            "required": false,
+                            "defaultValue": "1:1"
+                        }
+                    ]
                 }
             ],
             "allowedVariants": [],
